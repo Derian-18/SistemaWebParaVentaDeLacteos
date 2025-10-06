@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecheria Online</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">Lechería Online</div>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Los mejores lácteos frescos para tu familia</h1>
+        <p>Entrega a domicilio de leche, queso, yogurt y más productos frescos.</p>
+        <a href="#productos" class="btn">Ver Productos</a>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos" class="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="{% static 'IMG/leche.jpg' %}" alt="Leche fresca">
+                <h3>Leche Fresca</h3>
+                <p>Leche 100% natural y fresca directamente del rancho.</p>
+            </div>
+            <div class="card">
+                <img src="{% static 'IMG/Quesos.jpg' %}" alt="Queso artesanal">
+                <h3>Queso Artesanal</h3>
+                <p>Queso hecho a mano con leche de vaca orgánica.</p>
+            </div>
+            <div class="card">
+                <img src="{% static 'IMG/yogurt.jpg' %}" alt="Yogurt natural">
+                <h3>Yogurt Natural</h3>
+                <p>Yogurt cremoso, sin conservadores y delicioso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lechería Online. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
