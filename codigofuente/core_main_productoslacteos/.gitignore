@@ -1,4 +1,8 @@
-lab1/
+bin/
+lib/
+lib64/
+pyvenv.cfg
 __pycache__/
 *.pyc
 db.sqlite3
+.env
