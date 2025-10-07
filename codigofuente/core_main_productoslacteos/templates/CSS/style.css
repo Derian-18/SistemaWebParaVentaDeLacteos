@@ -30,9 +30,10 @@ nav ul {
     gap: 20px;
 }
 
+/* Esta es la parte del header de las 3 opciones */
 nav ul li a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: bold;
     transition: color 0.3s;
 }
@@ -47,14 +48,14 @@ nav ul li a:hover {
     padding: 100px 20px;
     background: url('IMG/leche.jpg') center/cover no-repeat;
     color: rgb(0, 0, 0);
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    
 }
 
 .hero .btn {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 30px;
-    background-color: #ffe600;
+    background-color: #e4c127;
     color: #333;
     text-decoration: none;
     font-weight: bold;
