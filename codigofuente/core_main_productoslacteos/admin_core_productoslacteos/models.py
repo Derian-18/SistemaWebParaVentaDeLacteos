@@ -1,18 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User, AbstractUser
 
 # Aqui es donde creare las tablas de mi base de datos.
 
-# Tabla Usuario
-class Usuario(models.Model):
-    nombre = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+# No se ocupa crear esto importando la libreria User de Python
+# Tabla Usuario (Python ya lo crea solo agrego datos que necesito)
+# Aqui extiendo con AbstractUser los datos que yo necesito a User de Django
+class Usuario_personalizado(AbstractUser):
     ROLES = (
         ('admin', 'Admin'),
         ('cliente', 'Cliente'),
     )
     rol = models.CharField(max_length=50, choices=ROLES, default='cliente')
-    fecha_registro = models.DateTimeField(auto_now_add=True)
 
 # Tabla Categoria
 class Categoria(models.Model):
@@ -24,9 +23,16 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
-    unidad_medida = models.CharField(max_length=50)
+    UNIDAD_MEDIDA = (
+        ('kg', 'Kg'),
+        ('g', 'G'),
+        ('l', 'L'),
+        ('ml', 'Ml'),
+    )
+    unidad_medida = models.CharField(max_length=50, choices=UNIDAD_MEDIDA)
     # Esta es la relacion con la tabla Categoria
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    # Agregar descripcion
 
 # Tabla Pedidos
 class Pedido(models.Model):
@@ -42,7 +48,7 @@ class Pedido(models.Model):
     metodo_pago = models.CharField(max_length=50)
     fecha_pago = models.DateTimeField(null=True, blank=True)
     # Esta es la relacion con la tabla Usuario
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario_personalizado, on_delete=models.CASCADE)
 
 # Tabla pedidos_detalle
 class PedidoDetalle(models.Model):
