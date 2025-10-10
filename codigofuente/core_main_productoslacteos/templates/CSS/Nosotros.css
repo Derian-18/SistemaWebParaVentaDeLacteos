@@ -8,7 +8,7 @@
 
 /* Navbar */
 header {
-    background-color: #4CAF50;
+    background-color: #04bdbd;
     padding: 15px 20px;
 }
 
@@ -89,7 +89,7 @@ nav ul li a:hover {
     background-color: #f8f8f8;
     border-radius: 10px;
     overflow: hidden;
-    width: 300px;
+    width: 250px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s;
 }
@@ -99,7 +99,7 @@ nav ul li a:hover {
 }
 
 .card img {
-    width: 100%;
+    width: 80%;
     height: 200px;
     object-fit: cover;
 }
@@ -119,5 +119,5 @@ footer {
     text-align: center;
     padding: 20px;
     /*Aqui se cambia de arriba parra abajo la linea negra*/
-    margin-top: 180px;
+    margin-top: 198px;
 }
