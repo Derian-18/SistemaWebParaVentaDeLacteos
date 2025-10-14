@@ -8,7 +8,7 @@
 
 /* Navbar */
 header {
-    background-color: #04bdbd;
+    background-color: #99160d;
     padding: 15px 20px;
 }
 
@@ -42,14 +42,7 @@ nav ul li a:hover {
     color: #ffe600;
 }
 
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: url('IMG/leche.jpg') center/cover no-repeat;
-    color: rgb(0, 0, 0);
-    
-}
+
 
 .hero .btn {
     display: inline-block;
