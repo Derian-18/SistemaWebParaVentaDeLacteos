@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',   
     'admin_core_productoslacteos',
+    'pedidos',
+    'productos',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
