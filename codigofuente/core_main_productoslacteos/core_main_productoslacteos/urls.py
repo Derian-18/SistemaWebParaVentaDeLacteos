@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('admin_core_productoslacteos.urls')),
+    path('productos/', include('productos.urls')), # Aqui conectamos la app de productos
 ]

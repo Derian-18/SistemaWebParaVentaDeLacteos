@@ -10,7 +10,8 @@ class Categoria(models.Model):
 # Tabla Producto
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
-    precio = models.PositiveDecimalField().DecimalField(max_digits=10, decimal_places=2)
+    # Modificar aqui, el precio puede ser negativoy no es asi
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     UNIDAD_MEDIDA = (
         ('kg', 'Kg'),
@@ -21,4 +22,3 @@ class Producto(models.Model):
     unidad_medida = models.CharField(max_length=50, choices=UNIDAD_MEDIDA)
     # Esta es la relacion con la tabla Categoria
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    # Agregar descripcion
