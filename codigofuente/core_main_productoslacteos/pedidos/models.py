@@ -17,6 +17,8 @@ class Pedido(models.Model):
     )
     estado = models.CharField(max_length=50, choices=ESTADO, default='pendiente')
     total = models.DecimalField(max_digits=10, decimal_places=2)
+    # Aqui podemos agregar mas campos relacionados con el pago para que el usuario pueda elegir
+    # cual usara al momento de pagar
     metodo_pago = models.CharField(max_length=50)
     fecha_pago = models.DateTimeField(null=True, blank=True)
     # Esta es la relacion con la tabla Usuario

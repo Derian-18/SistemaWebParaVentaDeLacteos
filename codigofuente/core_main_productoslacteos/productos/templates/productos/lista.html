@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html>
+    {% load static %}
 <head>
     <title>Lista de Productos</title>
+    <link rel="stylesheet" href="{% static 'lista.css' %}">
 </head>
 <body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Productos</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'landingpage' %}">Inicio</a></li>
+                <li><a href="{% url 'lista_productos' %}">Productos</a></li>
+                <li><a href="{% url 'Nosotros' %}">Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <h1>Productos</h1>
     <a href="{% url 'crear_producto' %}">➕ Crear Producto</a>
     <table border="1">

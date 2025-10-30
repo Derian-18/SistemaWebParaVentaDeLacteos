@@ -9,6 +9,5 @@ urlpatterns = [
     path('', landingpage, name="landingpage"),
     
     # Esta es la pagina sobre nosotros los desarrolladores
-    path('nosotros/', Nosotros, name='Nosotros') 
-    
+    path('nosotros/', Nosotros, name='Nosotros'),
 ]   
