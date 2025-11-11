@@ -1,7 +1,7 @@
 from django.db import models
 
 # Importamos las demas tablas necesarias de las otras Apps 
-from admin_core_productoslacteos.models import Usuario_personalizado
+from autenticacion.models import Usuario_personalizado
 from productos.models import Producto
 
 # Create your models here.
