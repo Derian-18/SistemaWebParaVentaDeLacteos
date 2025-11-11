@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'admin_core_productoslacteos',
     'pedidos',
     'productos',
+    'autenticacion',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -104,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -128,4 +129,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'admin_core_productoslacteos.Usuario_personalizado'
+AUTH_USER_MODEL = 'autenticacion.Usuario_personalizado'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'lista_productos'  # a dónde va después de iniciar sesión
+LOGOUT_REDIRECT_URL = 'landingpage'

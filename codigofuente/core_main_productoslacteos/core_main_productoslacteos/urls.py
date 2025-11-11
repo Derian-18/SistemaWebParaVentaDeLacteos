@@ -18,7 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # Esta es la pagina del admin
     path('admin/', admin.site.urls),
+
+    # Esta pagina es la de inicio que es donde esta el landing page y la pagina sobre nosotros
     path('', include('admin_core_productoslacteos.urls')),
+
+    # Aqui estan los productos
     path('productos/', include('productos.urls')), # Aqui conectamos la app de productos
+    
+    # Aqui esta la autenticacion para poder ingresar a los productos
+    path('autenticacion/', include('autenticacion.urls')),
 ]
