@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto, Categoria
+from django.contrib.auth.decorators import login_required
 
 # Listar productos
+@login_required(login_url='login')
 def lista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'productos/lista.html', {'productos': productos})
 
+@login_required(login_url='login')
 # Crear producto
 def crear_producto(request):
     categorias = Categoria.objects.all()
@@ -28,6 +31,7 @@ def crear_producto(request):
 
     return render(request, 'productos/crear.html', {'categorias': categorias})
 
+@login_required(login_url='login')
 # Editar producto
 def editar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
@@ -47,6 +51,7 @@ def editar_producto(request, id):
         'categorias': categorias
     })
 
+@login_required(login_url='login')
 # Eliminar producto
 def eliminar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
