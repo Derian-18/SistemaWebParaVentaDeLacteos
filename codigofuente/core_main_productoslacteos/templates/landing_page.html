@@ -1,150 +1,82 @@
-<!DOCTYPE html>
 {% load static %}
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lechería Online</title>
+    <title>Muuu y Más - Lácteos Premium</title>
     <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Lechería Online</div>
-            <ul class="nav-links">
-                <li><a href="{% url 'landingpage' %}">Inicio</a></li>
-                <li><a href="{% url 'lista_productos' %}">Productos</a></li>
-                <li><a href="{% url 'Nosotros' %}">Nosotros</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">🐄</div>
+            <div class="brand-text">
+                <h1>Muuu y Más</h1>
+                <p>Lácteos Premium</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'landingpage' %}">Inicio</a></li>
+            <li><a href="{% url 'lista_productos' %}">Productos</a></li>
+            <li><a href="{% url 'Nosotros' %}">Nosotros</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+        </ul>
+        <!-- Este boton se necesitara para la parte de compras (Retirar de landing page)-->
+        <button class="cart-btn">🛒</button>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <h1>Los mejores productos lacteos para tu familia</h1>
-        <p>Entrega a domicilio de leche, queso, yogurt y más productos frescos</p>
-        <button class="cta-button">Ver productos</button>
-    </section>
+    <section class="hero">
+        <div class="cow-decoration">🐄</div>
+        <div class="milk-glass">🥛</div>
+        
+        <div class="hero-content">
+            <div class="badge">
+                🌾 Productos 100% Naturales
+            </div>
+            <h2>
+                Bienvenido a<br>
+                <span class="highlight">Muuu y Más 🐄</span>
+            </h2>
+            <p>
+                Los mejores productos lácteos frescos y naturales,
+                directo del campo a tu mesa.
+            </p>
+            <div class="cta-buttons">
+                <a href="#productos" class="btn btn-primary">
+                    Ver Productos 🛒
+                </a>
+                <a href="#proceso" class="btn btn-secondary">
+                    Conocer Más
+                </a>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Clientes Felices</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Natural</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-label">Entrega</div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Products Section -->
-    <section class="products-section" id="productos">
-        <h2>Nuestros productos</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- Aquí colocas tu imagen -->
-                    <img src="{% static 'IMG/primer-plano-de-vaso-de-leche.jpg' %}" alt="Leche fresca">
-                </div>
-                <div class="product-info">
-                    <h3>Leche fresca</h3>
-                    <p>Leche 100% natural y fresca directamente del rancho.</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- Aquí colocas tu imagen -->
-                    <img src="{% static 'IMG/Quesos.jpg' %}" alt="Queso artesanal">
-                </div>
-                <div class="product-info">
-                    <h3>Queso artesanal</h3>
-                    <p>Queso hecho a mano con leche de vaca orgánica.</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- Aquí colocas tu imagen -->
-                    <img src="{% static 'IMG/yogur-plano-en-composicion-de-tazon.jpg' %}" alt="Yogurt natural">
-                </div>
-                <div class="product-info">
-                    <h3>Yogurt natural</h3>
-                    <p>Yogurt cremoso, sin conservadores y delicioso.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="feature-card">
-            <div class="feature-image">
-                <!-- Aquí colocas tu imagen -->
-                <img src="{% static 'IMG/figmaleche.jpeg' %}" alt="Leche natural">
-            </div>
-            <div class="feature-content">
-                <h3>Sin conservadores, sin aditivos y con todo el sabor natural.</h3>
-                <p>Nuestra leche conserva su esencia original: nutritiva, cremosa y llena de energía para tu día.</p>
-                <p>Un producto honesto, simple y delicioso.</p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-image">
-                <!-- Aquí colocas tu imagen -->
-                <img src="{% static 'IMG/figmayogurt.jpg' %}" alt="Yogurt fresco">
-            </div>
-            <div class="feature-content">
-                <h3>Hecho con cultivos naturales y leche fresca del día.</h3>
-                <p>Su textura suave y su sabor equilibrado hacen del yogurt el complemento ideal para tus frutas, granolas o como un snack saludable y lleno de sabor.</p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-image">
-                <!-- Aquí colocas tu imagen -->
-                <img src="{% static 'IMG/figmaquesos.jpeg' %}" alt="Quesos tradicionales">
-            </div>
-            <div class="feature-content">
-                <h3>Cremosos, suaves o añejos, nuestros quesos están hechos con recetas tradicionales y leche 100% fresca.</h3>
-                <p>Perfectos para acompañar tus comidas, compartir en familia o disfrutar con un buen pan y un poco de vino.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Info Section -->
-    <section class="info-section" id="nosotros">
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-image-wrapper cheese-variety">
-                    <!-- Aquí colocas tu imagen de quesos -->
-                    <img src="{% static 'IMG/figmaquesogrande.jpeg' %}" alt="Variedad de quesos">
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-text">
-                    <h3>El sabor auténtico que nace del campo y llega directo a tu mesa</h3>
-                    <p>Descubre nuestros quesos artesanales, elaborados con leche 100% fresca, sin conservadores y con el toque único de la tradición mexicana.</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-text">
-                    <h3>La frescura del campo embotellada para ti</h3>
-                    <p>Disfruta nuestra leche 100% pura y natural, recién ordeñada, sin conservadores ni aditivos, con ese sabor auténtico que sólo da la tradición mexicana.</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-image-wrapper milk-bottle">
-                    <!-- Aquí colocas tu imagen de leche -->
-                    <img src="{% static 'IMG/lecheportada.jpg' %}" alt="Leche fresca">
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-image-wrapper yogurt-container">
-                    <!-- Aquí colocas tu imagen de yogurt -->
-                    <img src="{% static 'IMG/Yogurtportada.jpg' %}" alt="Yogurt natural">
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-text">
-                    <h3>El sabor del campo, hecho cremosidad</h3>
-                    <p>Disfruta nuestro yogurt artesanal, elaborado con leche 100% fresca y cultivos naturales. Sin conservadores, sin prisas y con el auténtico sabor que solo lo hecho a mano puede ofrecer.</p>
-                </div>
-            </div>
+        <div class="hero-image">
+            <img src="{% static 'IMG/vaca.png' %}" alt="Vaca feliz en el campo">
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 LECHERÍA ONLINE. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p>&copy; 2025 Lechería Online. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
