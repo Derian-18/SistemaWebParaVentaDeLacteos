@@ -8,22 +8,38 @@
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Productos</div>
-            <ul class="nav-links">
-                <li><a href="{% url 'landingpage' %}">Inicio</a></li>
-                <li><a href="{% url 'lista_productos' %}">Productos</a></li>
-                <li><a href="{% url 'listar_categorias' %}">Categorias</a></li>
-                <li><a href="{% url 'Nosotros' %}">Nosotros</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">🐄</div>
+            <div class="brand-text">
+                <h1>Muuu y Más</h1>
+                <p>Lácteos Premium</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'landingpage' %}">Inicio</a></li>
+            <li><a href="{% url 'lista_productos' %}">Productos</a></li>
+            <li><a href="{% url 'listar_categorias' %}">Categorias</a></li>
+            <!--Esto lo que hace es que si no has iniciado sesion te muestra login, si ya iniciaste sesion te muestra logout-->
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+        <!-- Este boton se necesitara para la parte de compras (Retirar de landing page)
+        <button class="cart-btn">🛒</button>-->
+    </nav>
 
     <!--Productos-->
     <h1>Productos</h1>
+    
+    <!--Esto lo ue hace es que solo el rol admin puede ver ese boton de crear producto-->
+    {% if user.is_authenticated and user.rol == "admin" %}
     <a href="{% url 'crear_producto' %}">➕ Crear Producto</a>
+    {% endif %}
+
     <table border="1">
         <tr>
             <th>Nombre</th>
@@ -41,8 +57,10 @@
             <td>{{ producto.unidad_medida }}</td>
             <td>{{ producto.categoria.nombre }}</td>
             <td>
+                {% if user.is_authenticated and user.rol == "admin" %}
                 <a href="{% url 'editar_producto' producto.id %}">✏️ Editar</a>
                 <a href="{% url 'eliminar_producto' producto.id %}">🗑️ Eliminar</a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

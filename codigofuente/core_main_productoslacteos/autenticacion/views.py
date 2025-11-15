@@ -7,10 +7,15 @@ def registro(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
         if form.is_valid():
-            usuario = form.save()
+            usuario = form.save(commit=False)
+            usuario.rol = 'cliente'  # ← asigna rol automáticamente
+            usuario.save()
+
+            # Aqui se inicia sesion automaticamente
             login(request, usuario)
+            
             messages.success(request, 'Registro exitoso. Bienvenido!')
-            return redirect('login')  # Cambia por la URL que quiera que en este caso se va a reedireccionar a la pagina de productos
+            return redirect('landingpage')  # Cambia por la URL que quiera que en este caso se va a reedireccionar a la pagina de productos
     else:
         form = RegistroForm()
     return render(request, 'autenticacion/registro.html', {'form': form})
@@ -25,7 +30,7 @@ def iniciar_sesion(request):
             if user:
                 login(request, user)
                 messages.success(request, f'Bienvenido {user.username}!')
-                return redirect('lista_productos') # Cambiar
+                return redirect('landingpage') # Cambiar
         messages.error(request, 'Usuario o contraseña incorrectos.')
     else:
         form = LoginForm()

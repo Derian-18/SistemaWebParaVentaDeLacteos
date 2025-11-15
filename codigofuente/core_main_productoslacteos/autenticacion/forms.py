@@ -8,10 +8,7 @@ from .models import Usuario_personalizado
 class RegistroForm(UserCreationForm):
     class Meta:
         model = Usuario_personalizado
-        fields = ['username', 'email', 'rol', 'password1', 'password2']
-        widgets = {
-            'rol': forms.Select(attrs={'class': 'form-control'}),
-        }
+        fields = ['username', 'email', 'password1', 'password2']
 
 # Y aqui se crea el formulario para el login
 class LoginForm(AuthenticationForm):
