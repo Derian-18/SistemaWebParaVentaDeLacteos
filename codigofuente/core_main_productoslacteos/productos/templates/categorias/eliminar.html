@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Categoria</title>
+</head>
+<body>
+    <h1>¿Seguro que quieres eliminar la categoria "{{ categoria.nombre }}"?</h1>
+    <h3>Al eliminar una categoria se eliminaran todos los productos que se encuentren almacenados ahi</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">🗑️ Eliminar</button>
+        <a href="{% url 'listar_categorias' %}">Cancelar</a>
+    </form>
+</body>
+</html>

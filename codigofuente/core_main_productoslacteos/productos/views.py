@@ -2,6 +2,60 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto, Categoria
 from django.contrib.auth.decorators import login_required
 
+#############################################
+#
+# CRUD CATEGORIA
+#
+#############################################
+
+# Listar categorias
+@login_required(login_url='login')
+def listar_categorias(request):
+    categorias = Categoria.objects.all()
+    return render(request, 'categorias/lista.html', {'categorias': categorias})
+
+# Crear categoria
+@login_required(login_url='login')
+def crear_categoria(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+
+        Categoria.objects.create(
+            nombre=nombre,
+            descripcion=descripcion
+        )
+        return redirect('listar_categorias')
+
+    return render(request, 'categorias/crear.html')
+
+# Editar categoria
+@login_required(login_url='login')
+def editar_categoria(request, id):
+    categoria = get_object_or_404(Categoria, id=id)
+
+    if request.method == 'POST':
+        categoria.nombre = request.POST.get('nombre')
+        categoria.descripcion = request.POST.get('descripcion')
+        categoria.save()
+        return redirect('listar_categorias')
+
+    return render(request, 'categorias/editar.html', {'categoria': categoria})
+
+# Eliminar categoria
+@login_required(login_url='login')
+def eliminar_categoria(request, id):
+    categoria = get_object_or_404(Categoria, id=id)
+    if request.method == 'POST':
+        categoria.delete()
+        return redirect('listar_categorias')
+    return render(request, 'categorias/eliminar.html', {'categoria': categoria})
+#############################################
+#
+# CRUD PRODUCTOS 
+#
+#############################################
+
 # Listar productos
 @login_required(login_url='login')
 def lista_productos(request):
