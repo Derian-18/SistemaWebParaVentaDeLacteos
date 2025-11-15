@@ -9,3 +9,4 @@ class Usuario_personalizado(AbstractUser):
         ('cliente', 'Cliente'),
     )
     rol = models.CharField(max_length=50, choices=ROLES, default='cliente')
+    email = models.EmailField(unique=True)
