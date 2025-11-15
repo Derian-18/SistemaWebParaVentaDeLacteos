@@ -25,7 +25,7 @@ def iniciar_sesion(request):
             if user:
                 login(request, user)
                 messages.success(request, f'Bienvenido {user.username}!')
-                return redirect('lista_productos') # Cambiar
+                return redirect('landingpage') # Cambiar
         messages.error(request, 'Usuario o contraseña incorrectos.')
     else:
         form = LoginForm()
