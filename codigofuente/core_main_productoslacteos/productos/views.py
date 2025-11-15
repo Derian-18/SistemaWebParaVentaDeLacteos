@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto, Categoria
 from django.contrib.auth.decorators import login_required
+# Aqui importo el decorador de autenticacion para usar el solo admin
+# Tambien le agrego el nombre admin para que sea mas corto de poner
+from autenticacion.decorators import solo_admin as admin
 
 #############################################
 #
@@ -15,6 +18,7 @@ def listar_categorias(request):
     return render(request, 'categorias/lista.html', {'categorias': categorias})
 
 # Crear categoria
+@admin
 @login_required(login_url='login')
 def crear_categoria(request):
     if request.method == 'POST':
@@ -30,6 +34,7 @@ def crear_categoria(request):
     return render(request, 'categorias/crear.html')
 
 # Editar categoria
+@admin
 @login_required(login_url='login')
 def editar_categoria(request, id):
     categoria = get_object_or_404(Categoria, id=id)
@@ -43,6 +48,7 @@ def editar_categoria(request, id):
     return render(request, 'categorias/editar.html', {'categoria': categoria})
 
 # Eliminar categoria
+@admin
 @login_required(login_url='login')
 def eliminar_categoria(request, id):
     categoria = get_object_or_404(Categoria, id=id)
@@ -62,8 +68,9 @@ def lista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'productos/lista.html', {'productos': productos})
 
-@login_required(login_url='login')
 # Crear producto
+@admin
+@login_required(login_url='login')
 def crear_producto(request):
     categorias = Categoria.objects.all()
     if request.method == 'POST':
@@ -85,8 +92,9 @@ def crear_producto(request):
 
     return render(request, 'productos/crear.html', {'categorias': categorias})
 
-@login_required(login_url='login')
 # Editar producto
+@admin
+@login_required(login_url='login')
 def editar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
     categorias = Categoria.objects.all()
@@ -105,8 +113,9 @@ def editar_producto(request, id):
         'categorias': categorias
     })
 
-@login_required(login_url='login')
 # Eliminar producto
+@admin
+@login_required(login_url='login')
 def eliminar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
     if request.method == 'POST':
