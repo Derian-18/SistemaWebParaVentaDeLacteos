@@ -1,0 +1,9 @@
+    <!--Todo sobre catgeorias-->
+
+    <h1>Crear nueva categoria</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <textarea name="descripcion" placeholder="Descripción" required></textarea>
+        <button type="submit">Crear</button>
+    </form>

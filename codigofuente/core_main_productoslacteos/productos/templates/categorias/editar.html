@@ -1,0 +1,7 @@
+    <!--Categorias-->
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="nombre" value="{{ categoria.nombre }}" required>
+        <textarea name="descripcion" required>{{ categoria.descripcion }}</textarea>
+        <button type="submit">Guardar cambios</button>
+    </form>

@@ -11,7 +11,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">Productos</div>
+            <div class="logo">Categorias</div>
             <ul class="nav-links">
                 <li><a href="{% url 'landingpage' %}">Inicio</a></li>
                 <li><a href="{% url 'lista_productos' %}">Productos</a></li>
@@ -21,28 +21,24 @@
         </nav>
     </header>
 
-    <!--Productos-->
-    <h1>Productos</h1>
-    <a href="{% url 'crear_producto' %}">➕ Crear Producto</a>
+    
+
+    <!--Categorias-->
+    <h1>Categorias</h1>
+    <a href="{% url 'crear_categoria' %}">➕ Crear categoria</a>
     <table border="1">
         <tr>
             <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Unidad</th>
-            <th>Categoría</th>
+            <th>Descripcion</th>
             <th>Acciones</th>
         </tr>
-        {% for producto in productos %}
+        {% for c in categorias %}
         <tr>
-            <td>{{ producto.nombre }}</td>
-            <td>${{ producto.precio }}</td>
-            <td>{{ producto.stock }}</td>
-            <td>{{ producto.unidad_medida }}</td>
-            <td>{{ producto.categoria.nombre }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.descripcion }}</td>
             <td>
-                <a href="{% url 'editar_producto' producto.id %}">✏️ Editar</a>
-                <a href="{% url 'eliminar_producto' producto.id %}">🗑️ Eliminar</a>
+                <a href="{% url 'editar_categoria' c.id %}">✏️ Editar</a>    
+                <a href="{% url 'eliminar_categoria' c.id %}">🗑️ Eliminar</a>
             </td>
         </tr>
         {% endfor %}

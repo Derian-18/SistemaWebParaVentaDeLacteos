@@ -4,7 +4,7 @@
     <title>Eliminar Producto</title>
 </head>
 <body>
-    <h1>¿Seguro que quieres eliminar "{{ producto.nombre }}"?</h1>
+    <h1>¿Seguro que quieres eliminar el producto "{{ producto.nombre }}"?</h1>
     <form method="POST">
         {% csrf_token %}
         <button type="submit">🗑️ Eliminar</button>
