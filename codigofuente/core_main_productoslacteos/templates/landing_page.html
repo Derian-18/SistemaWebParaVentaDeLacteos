@@ -20,12 +20,17 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'landingpage' %}">Inicio</a></li>
-            <li><a href="{% url 'lista_productos' %}">Productos</a></li>
             <li><a href="{% url 'Nosotros' %}">Nosotros</a></li>
+            <li><a href="{% url 'lista_productos' %}">Productos</a></li>
+            <!--Esto lo que hace es que si no has iniciado sesion te muestra login, si ya iniciaste sesion te muestra logout-->
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
-        <!-- Este boton se necesitara para la parte de compras (Retirar de landing page)-->
-        <button class="cart-btn">🛒</button>
+        <!-- Este boton se necesitara para la parte de compras (Retirar de landing page)
+        <button class="cart-btn">🛒</button>-->
     </nav>
 
     <!-- Hero Section -->
