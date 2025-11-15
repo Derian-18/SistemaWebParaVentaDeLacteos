@@ -34,7 +34,11 @@
 
     <!--Categorias-->
     <h1>Categorias</h1>
+
+    {% if user.is_authenticated and user.rol == "admin" %}
     <a href="{% url 'crear_categoria' %}">➕ Crear categoria</a>
+    {% endif %}
+
     <table border="1">
         <tr>
             <th>Nombre</th>
@@ -46,8 +50,10 @@
             <td>{{ c.nombre }}</td>
             <td>{{ c.descripcion }}</td>
             <td>
+                {% if user.is_authenticated and user.rol == "admin" %}
                 <a href="{% url 'editar_categoria' c.id %}">✏️ Editar</a>    
                 <a href="{% url 'eliminar_categoria' c.id %}">🗑️ Eliminar</a>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
