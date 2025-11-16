@@ -8,9 +8,10 @@
 
 /* Navbar */
 header {
-    background-color: #1791a1;
+    background: linear-gradient(400deg, #1f70e9, #0d5f6a);
     padding: 15px 20px;
 }
+
 
 nav {
     display: flex;
