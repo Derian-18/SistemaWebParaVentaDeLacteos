@@ -1,0 +1,23 @@
+<div class="sidebar-carrito">
+    <h3>Carrito</h3>
+
+    {% if carrito_items %}
+        <ul>
+            {% for item in carrito_items %}
+            <li>
+                {{ item.producto.nombre }}
+                ({{ item.cantidad }})
+                — ${{ item.subtotal }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Total:</strong> ${{ carrito_total }}</p>
+
+        <a href="{% url 'ver_carrito' %}">Ver Carrito</a>
+
+    {% else %}
+        <p>No hay productos en el carrito</p>
+    {% endif %}
+</div>
+

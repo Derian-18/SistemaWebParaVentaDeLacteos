@@ -1,0 +1,70 @@
+{% load static %}
+
+{% block content %}
+
+<h2>🛒 Mi Carrito</h2>
+<hr>
+
+{% if items %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.producto.nombre }}</td>
+
+                <td>${{ item.producto.precio }}</td>
+
+                <!-- Actualizar cantidad -->
+                <td>
+                    <form action="{% url 'actualizar_cantidad' item.id %}" method="POST" style="display: flex; gap: 5px;">
+                        {% csrf_token %}
+                        <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" class="form-control" style="width: 80px;">
+                        <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+                    </form>
+                </td>
+
+                <td>${{ item.subtotal }}</td>
+
+                <td>
+                    <!-- Eliminar item -->
+                    <a href="{% url 'eliminar_item' item.id %}" class="btn btn-danger btn-sm">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- TOTAL -->
+    <h4 class="text-end">Total: <strong>${{ total }}</strong></h4>
+
+    <div class="d-flex justify-content-between mt-3">
+
+        <!-- Vaciar carrito -->
+        <a href="{% url 'vaciar_carrito' %}" class="btn btn-warning">
+            Vaciar carrito
+        </a>
+
+        <!-- Procesar pago (aún falta la view) -->
+        <a href="#" class="btn btn-success">
+            Proceder a pagar
+        </a>
+    </div>
+
+{% else %}
+    <h4>No tienes productos en tu carrito.</h4>
+    <a href="{% url 'lista_productos' %}" class="btn btn-primary mt-3">Volver a comprar</a>
+{% endif %}
+
+{% endblock %}

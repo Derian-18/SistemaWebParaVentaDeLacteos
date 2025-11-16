@@ -78,3 +78,8 @@ body {
 .cart-btn:hover {
     transform: scale(1.1);
 }
+
+.sidebar {
+  transform: translateX(100%);
+  transition: 0.3s;
+}

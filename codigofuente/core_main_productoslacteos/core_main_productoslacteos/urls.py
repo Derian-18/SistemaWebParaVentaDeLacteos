@@ -29,4 +29,6 @@ urlpatterns = [
     
     # Aqui esta la autenticacion para poder ingresar a los productos
     path('autenticacion/', include('autenticacion.urls')),
+
+    path('pedidos/', include('pedidos.urls')),
 ]
