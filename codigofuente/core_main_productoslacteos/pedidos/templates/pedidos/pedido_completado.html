@@ -1,0 +1,17 @@
+{% block content %}
+<h2>Pedido completado</h2>
+<p>Tu pedido #{{ pedido.id }} ha sido registrado exitosamente.</p>
+
+<h3>Detalles:</h3>
+<ul>
+    {% for item in detalles %}
+    <li>
+        {{ item.cantidad }} x {{ item.producto.nombre }} — ${{ item.subtotal }}
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Total: ${{ pedido.total }}</h3>
+
+<a href="/" class="btn btn-primary mt-3">Volver a comprar</a>
+{% endblock %}
