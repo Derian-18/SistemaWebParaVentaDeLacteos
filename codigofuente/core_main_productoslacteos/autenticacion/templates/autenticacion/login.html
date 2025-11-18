@@ -1,7 +1,47 @@
-<h2>Iniciar Sesión</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Entrar</button>
-</form>
-<a href="{% url 'registro' %}">¿No tienes cuenta? Regístrate</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'autenticacion/login.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Usuario</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="error">{{ form.password.errors }}</div>
+                {% endif %}
+            </div>
+
+            {% if form.non_field_errors %}
+                <div class="error">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+
+        <div class="link">
+            <a href="{% url 'registro' %}">¿No tienes cuenta? Regístrate</a>
+        </div>
+    </div>
+
+</body>
+</html>
