@@ -109,7 +109,7 @@
                 <div class="carrito-item">
                     <strong>{{ item.nombre }}</strong><br>
                     Cantidad: {{ item.cantidad }}<br>
-                    Precio: ${{ item.precio }}<br>
+                    Precio: ${{ item.producto.precio }}<br>
                     Subtotal: ${{ item.subtotal }}<br>
 
                     <a href="{% url 'actualizar_cantidadsidebar' item.id %}?accion=sumar">➕</a>
