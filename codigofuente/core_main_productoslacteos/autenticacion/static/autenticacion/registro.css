@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F7EEDB; /* Beige suave */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 350px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FF8A3D; /* Naranja */
+}
+
+form p {
+    margin-bottom: 12px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #FF8A3D;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #FFF7EF;
+}
+
+input:focus {
+    outline: none;
+    border-color: #E76E2F;
+    background-color: #FFF3E5;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF8A3D;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #E76E2F;
+}
+
+.extra-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.extra-link a {
+    text-decoration: none;
+    color: #FF8A3D;
+    font-weight: bold;
+}
+
+.extra-link a:hover {
+    text-decoration: underline;
+}
