@@ -69,42 +69,53 @@
     </div>
 
     <!--Productos-->
-    <h1>Productos</h1>
+<h1>Productos</h1>
 
-    {% if user.is_authenticated and user.rol == "admin" %}
-    <a href="{% url 'crear_producto' %}">➕ Crear Producto</a>
-    {% endif %}
+{% if user.is_authenticated and user.rol == "admin" %}
+<a href="{% url 'crear_producto' %}">➕ Crear Producto</a>
+{% endif %}
 
-    <table border="1">
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Unidad</th>
-            <th>Categoría</th>
-            <th>Acciones</th>
-        </tr>
-        {% for producto in productos %}
-        <tr>
-            <td>{{ producto.nombre }}</td>
-            <td>${{ producto.precio }}</td>
-            <td>{{ producto.stock }}</td>
-            <td>{{ producto.unidad_medida }}</td>
-            <td>{{ producto.categoria.nombre }}</td>
-            <td>
-                {% if user.is_authenticated and user.rol == "admin" %}
-                    <a href="{% url 'editar_producto' producto.id %}">✏️ Editar</a>
-                    <a href="{% url 'eliminar_producto' producto.id %}">🗑️ Eliminar</a>
-                {% endif %}
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Unidad</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+        <th>Imagen</th>
+    </tr>
 
-                <!-- Botón visible para cualquier usuario -->
-                <a href="{% url 'agregar_al_carrito' producto.id %}" style="color: green;">
-                🛒 Agregar al carrito
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    {% for producto in productos %}
+    <tr>
+        <td>{{ producto.nombre }}</td>
+        <td>${{ producto.precio }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>{{ producto.unidad_medida }}</td>
+        <td>{{ producto.categoria.nombre }}</td>
+
+        <td>
+            {% if user.is_authenticated and user.rol == "admin" %}
+                <a href="{% url 'editar_producto' producto.id %}">✏️ Editar</a>
+                <a href="{% url 'eliminar_producto' producto.id %}">🗑️ Eliminar</a>
+            {% endif %}
+
+            <!-- Botón visible para cualquier usuario -->
+            <a href="{% url 'agregar_al_carrito' producto.id %}" style="color: green;">
+            🛒 Agregar al carrito
+            </a>
+        </td>
+
+        <td>
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" width="80" height="80" style="object-fit: cover;">
+            {% else %}
+                <span>Sin imagen</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
     <script>
         function toggleCarrito() {

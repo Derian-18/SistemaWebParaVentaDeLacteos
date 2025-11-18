@@ -8,7 +8,7 @@
 
 /* Navbar */
 header {
-    background: linear-gradient(400deg, #1f70e9, #0d5f6a);
+    background: linear-gradient(400deg, #3f1212, #6a0d0d);
     padding: 15px 20px;
 }
 
@@ -43,7 +43,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffe600;
+    color: #1b9917;
 }
 
 /* Hero section */
@@ -66,7 +66,7 @@ nav ul li a:hover {
 
 /* Productos */
 .productos {
-    padding: clamp(30px, 5vw, 50px) 20px;
+    padding: clamp(30px, 5vw, 90px) 200px;
     text-align: center;
 }
 
