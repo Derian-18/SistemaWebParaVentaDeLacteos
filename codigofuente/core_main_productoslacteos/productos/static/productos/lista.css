@@ -83,3 +83,57 @@ body {
   transform: translateX(100%);
   transition: 0.3s;
 }
+
+/* Sidebar del carrito */
+#sidebar-carrito {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 6px rgba(0,0,0,0.2);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 9999;
+}
+#sidebar-carrito.open {
+    right: 0;
+}
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.close-btn {
+    cursor: pointer;
+    font-size: 20px;
+}
+.cart-btn {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.carrito-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+.carrito-total {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.carrito-actions a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    background: #1791a1;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.carrito-actions a:hover {
+    background: #0f6d7a;
+}
