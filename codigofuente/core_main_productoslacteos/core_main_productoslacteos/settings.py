@@ -128,6 +128,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # ← Cambiar 'templates' por 'static'
 ]
 
+# Media para agregar productos desde el pa pagina web
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Para producción (cuando hagas collectstatic)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

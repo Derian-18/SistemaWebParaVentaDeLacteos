@@ -23,4 +23,5 @@ class Producto(models.Model):
     )
     unidad_medida = models.CharField(max_length=50, choices=UNIDAD_MEDIDA)
     # Esta es la relacion con la tabla Categoria
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)  
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='productos/', null=True, blank=True)

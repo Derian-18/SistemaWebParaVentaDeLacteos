@@ -79,6 +79,7 @@ def crear_producto(request):
         stock = request.POST['stock']
         unidad_medida = request.POST['unidad_medida']
         categoria_id = request.POST['categoria']
+        imagen = request.FILES.get('imagen')
         categoria = Categoria.objects.get(id=categoria_id)
 
         Producto.objects.create(
@@ -86,7 +87,8 @@ def crear_producto(request):
             precio=precio,
             stock=stock,
             unidad_medida=unidad_medida,
-            categoria=categoria
+            categoria=categoria,
+            imagen=imagen
         )
         return redirect('lista_productos')
 
