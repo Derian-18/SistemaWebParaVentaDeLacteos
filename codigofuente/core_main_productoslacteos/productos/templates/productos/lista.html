@@ -1,8 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Lista de Productos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos - Muuu y Más</title>
     <link rel="stylesheet" href="{% static 'productos/lista.css' %}">
 </head>
 <body>
@@ -20,7 +22,7 @@
         <ul class="nav-links">
             <li><a href="{% url 'landingpage' %}">Inicio</a></li>
             <li><a href="{% url 'lista_productos' %}">Productos</a></li>
-            <li><a href="{% url 'listar_categorias' %}">Categorias</a></li>
+            <li><a href="{% url 'listar_categorias' %}">Categorías</a></li>
 
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -68,60 +70,116 @@
         </div>
     </div>
 
-    <!--Productos-->
-<h1>Productos</h1>
+    <!-- Sección de Productos -->
+    <div class="container">
+        <div class="header">
+            <h1>Nuestros Productos</h1>
+            <p>Descubre nuestra selección de productos lácteos premium</p>
+        </div>
 
-{% if user.is_authenticated and user.rol == "admin" %}
-<a href="{% url 'crear_producto' %}">➕ Crear Producto</a>
-{% endif %}
+        <!-- Botón de crear producto (solo admin) -->
+        {% if user.is_authenticated and user.rol == "admin" %}
+        <div class="admin-actions">
+            <a href="{% url 'crear_producto' %}" class="btn-crear">➕ Crear Producto</a>
+        </div>
+        {% endif %}
 
-<table border="1">
-    <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Unidad</th>
-        <th>Categoría</th>
-        <th>Acciones</th>
-        <th>Imagen</th>
-    </tr>
+        <!-- Filtros por categoría (opcional - puedes agregar funcionalidad con JS) -->
+        <div class="filter-tabs">
+            <div class="tab active" onclick="filtrarCategoria('todas')">🥛 Todos</div>
+            <div class="tab" onclick="filtrarCategoria('leche')">🥛 Leche</div>
+            <div class="tab" onclick="filtrarCategoria('quesos')">🧀 Quesos</div>
+            <div class="tab" onclick="filtrarCategoria('yogures')">🍦 Yogures</div>
+            <div class="tab" onclick="filtrarCategoria('otros')">🥥 Otros</div>
+        </div>
 
-    {% for producto in productos %}
-    <tr>
-        <td>{{ producto.nombre }}</td>
-        <td>${{ producto.precio }}</td>
-        <td>{{ producto.stock }}</td>
-        <td>{{ producto.unidad_medida }}</td>
-        <td>{{ producto.categoria.nombre }}</td>
+        <!-- Grid de productos -->
+        <div class="products-grid">
+            {% for producto in productos %}
+            <div class="product-card" data-categoria="{{ producto.categoria.nombre|lower }}">
+                <div style="position: relative;">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="product-image">
+                    {% else %}
+                        <div class="no-image">🐄 Sin imagen</div>
+                    {% endif %}
+                    
+                    <div class="stock-badge">Stock: {{ producto.stock }}</div>
+                    <div class="favorite-btn">♡</div>
+                </div>
+                
+                <div class="product-info">
+                    <h3 class="product-title">{{ producto.nombre }}</h3>
+                    <p class="product-description">{{ producto.categoria.nombre }} - {{ producto.unidad_medida }}</p>
+                    
+                    <div class="product-footer">
+                        <span class="product-price">${{ producto.precio }}</span>
+                        <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn-add">
+                            🛒 Agregar
+                        </a>
+                    </div>
 
-        <td>
-            {% if user.is_authenticated and user.rol == "admin" %}
-                <a href="{% url 'editar_producto' producto.id %}">✏️ Editar</a>
-                <a href="{% url 'eliminar_producto' producto.id %}">🗑️ Eliminar</a>
-            {% endif %}
-
-            <!-- Botón visible para cualquier usuario -->
-            <a href="{% url 'agregar_al_carrito' producto.id %}" style="color: green;">
-            🛒 Agregar al carrito
-            </a>
-        </td>
-
-        <td>
-            {% if producto.imagen %}
-                <img src="{{ producto.imagen.url }}" width="80" height="80" style="object-fit: cover;">
-            {% else %}
-                <span>Sin imagen</span>
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+                    <!-- Controles de administrador -->
+                    {% if user.is_authenticated and user.rol == "admin" %}
+                    <div class="admin-controls">
+                        <a href="{% url 'editar_producto' producto.id %}" class="btn-edit">✏️ Editar</a>
+                        <a href="{% url 'eliminar_producto' producto.id %}" class="btn-delete">🗑️ Eliminar</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
     <script>
+        // Toggle del carrito
         function toggleCarrito() {
             let sidebar = document.getElementById("sidebar-carrito");
             sidebar.classList.toggle("open");
         }
+
+        // Filtrado de productos por categoría (opcional)
+        function filtrarCategoria(categoria) {
+            // Actualizar tabs activos
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filtrar productos
+            const productos = document.querySelectorAll('.product-card');
+            productos.forEach(producto => {
+                const productoCategoria = producto.getAttribute('data-categoria');
+                
+                if (categoria === 'todas') {
+                    producto.style.display = 'block';
+                } else {
+                    if (productoCategoria.includes(categoria)) {
+                        producto.style.display = 'block';
+                    } else {
+                        producto.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Animación de favoritos (opcional)
+        document.addEventListener('DOMContentLoaded', function() {
+            const favBtns = document.querySelectorAll('.favorite-btn');
+            
+            favBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.textContent === '♡') {
+                        this.textContent = '♥';
+                        this.style.color = '#f56565';
+                    } else {
+                        this.textContent = '♡';
+                        this.style.color = '#000';
+                    }
+                });
+            });
+        });
     </script>
 
 </body>
