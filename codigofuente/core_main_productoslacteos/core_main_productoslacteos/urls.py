@@ -33,6 +33,8 @@ urlpatterns = [
     path('autenticacion/', include('autenticacion.urls')),
 
     path('pedidos/', include('pedidos.urls')),
+
+    path('pagos/', include('pagos.urls')),
 ]
 
 if settings.DEBUG:
