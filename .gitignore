@@ -8,3 +8,7 @@ db.sqlite3
 .env
 lib64
 media/
+EV/
+__pycache__/
+*.pyc
+db.sqlite3
