@@ -1,12 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Crear Producto</title>
+    <link rel="stylesheet" href="{% static 'productos/crear.css' %}">
 </head>
 <body>
     <h1>Crear nuevo producto</h1>
 
-    <form method="POST" enctype="multipart/form-data">  <!-- 👈 IMPORTANTE -->
+    <form method="POST" enctype="multipart/form-data">  <!--  IMPORTANTE -->
         {% csrf_token %}
 
         <label>Nombre:</label>

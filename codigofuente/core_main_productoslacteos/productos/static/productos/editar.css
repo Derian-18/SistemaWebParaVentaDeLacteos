@@ -1,0 +1,96 @@
+/* ==================== COLORES ==================== */
+:root {
+    --amarillo: #ffb300;
+    --naranja: #ff9800;
+    --crema: #fff8e6;
+    --gris-texto: #555;
+    --gris-suave: #ddd;
+}
+
+/* ==================== BASE ==================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--crema);
+    margin: 0;
+    padding: 0;
+    color: var(--gris-texto);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #000;
+    font-size: 32px;
+    margin-top: 40px;
+}
+
+/* ==================== FORMULARIO ==================== */
+form {
+    background: white;
+    max-width: 550px;
+    margin: 35px auto;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* Etiquetas */
+label {
+    font-weight: 600;
+    color: #222;
+    display: block;
+    margin-top: 15px;
+}
+
+/* Inputs y selects */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 2px solid var(--gris-suave);
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--amarillo);
+    box-shadow: 0 0 5px rgba(255,179,0,0.4);
+    outline: none;
+}
+
+/* Botón */
+button {
+    background: var(--amarillo);
+    color: black;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-top: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: var(--naranja);
+    color: white;
+}
+
+/* Enlace volver */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--naranja);
+    font-weight: bold;
+    font-size: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -78,3 +78,149 @@ body {
 .cart-btn:hover {
     transform: scale(1.1);
 }
+
+/* ==================== COLORES ==================== */
+:root {
+    --amarillo: #ffb300;
+    --naranja: #ff9800;
+    --crema: #fff8e6;
+    --gris-texto: #555;
+    --gris-suave: #ddd;
+}
+
+/* ==================== BASE ==================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--crema);
+    margin: 0;
+    padding: 0;
+    color: var(--gris-texto);
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: var(--amarillo);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.brand-text h1 {
+    color: var(--naranja);
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.brand-text p {
+    color: #666;
+    font-size: 12px;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--naranja);
+}
+
+/* ==================== TÍTULO ==================== */
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 32px;
+    color: #000;
+}
+
+/* ==================== BOTÓN CREAR CATEGORÍA ==================== */
+a[href*="crear"] {
+    display: inline-block;
+    margin-left: 5%;
+    background: var(--amarillo);
+    color: black !important;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a[href*="crear"]:hover {
+    background: var(--naranja);
+    color: white !important;
+}
+
+/* ==================== TABLA ==================== */
+table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background: var(--amarillo);
+    color: black;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background: #fffdf5;
+}
+
+tr:hover {
+    background: #ffe9b6;
+}
+
+/* Acciones */
+td a {
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--naranja);
+}
+
+td a:hover {
+    text-decoration: underline;
+}
