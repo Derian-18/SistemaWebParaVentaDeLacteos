@@ -1,0 +1,157 @@
+/* =============================
+   Estilos generales
+============================= */
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #fff7e6; /* Fondo amarillo claro */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    color: #d97706; /* Naranja */
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+    width: 60%;
+    margin: 10px auto 20px auto;
+    border-radius: 50px;
+}
+
+/* =============================
+   Tabla del carrito
+============================= */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.table thead {
+    background: #f59e0b; /* Naranja fuerte */
+    color: white;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #f3cb8a;
+}
+
+.table tbody tr:hover {
+    background: #fff3cc;
+}
+
+/* =============================
+   Inputs de cantidad
+============================= */
+input[type="number"] {
+    padding: 5px;
+    border: 1px solid #f59e0b;
+    border-radius: 6px;
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 5px #fbbf24;
+}
+
+/* =============================
+   Botones
+============================= */
+
+.btn {
+    padding: 8px 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* General */
+.btn-primary {
+    background: #f59e0b;
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #d97706;
+}
+
+/* Eliminar */
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+/* Vaciar */
+.btn-warning {
+    background: #fbbf24;
+    color: #7c5800;
+}
+
+.btn-warning:hover {
+    background: #f59e0b;
+    color: white;
+}
+
+/* Pagar */
+.btn-success {
+    background: #65a30d;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #4d7c0f;
+}
+
+/* Botón volver */
+.btn-primary.mt-3 {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+/* =============================
+   Total
+============================= */
+.text-end {
+    text-align: right;
+    color: #b45309;
+    font-size: 1.4rem;
+}
+
+/* =============================
+   Layout botones inferiores
+============================= */
+.d-flex {
+    display: flex;
+    gap: 20px;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.mt-3 {
+    margin-top: 20px;
+}
