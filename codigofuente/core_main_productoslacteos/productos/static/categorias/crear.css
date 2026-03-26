@@ -1,0 +1,96 @@
+/* ==================== FORMULARIO DE CREACIÓN ==================== */
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.form-container h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: var(--naranja);
+    text-align: left; /* Alineado al flujo del formulario */
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.custom-form input[type="text"],
+.custom-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--gris-suave);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-form input[type="text"]:focus,
+.custom-form textarea:focus {
+    outline: none;
+    border-color: var(--amarillo);
+    box-shadow: 0 0 8px rgba(255, 179, 0, 0.2);
+}
+
+.custom-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Botones dentro del formulario */
+.btn-submit {
+    background-color: var(--amarillo);
+    color: black;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: var(--naranja);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-cancel {
+    text-align: center;
+    text-decoration: none;
+    color: var(--gris-texto);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: -10px;
+}
+
+.btn-cancel:hover {
+    color: var(--naranja);
+    text-decoration: underline;
+}
