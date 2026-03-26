@@ -1,12 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pago Cancelado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'pagos/cancelado.css' %}">
 </head>
 <body>
-    <h1>Pago cancelado</h1>
-    <p>No se realizó ningún cargo.</p>
+    <div class="container">
+        <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </div>
+        <h1>Pago cancelado</h1>
+        <p>No se realizó ningún cargo en tu cuenta.</p>
+        <div class="divider"></div>
+        <a href="{% url 'ver_carrito' %}" class="btn-carrito">Volver al carrito</a>
+    </div>
 </body>
 </html>

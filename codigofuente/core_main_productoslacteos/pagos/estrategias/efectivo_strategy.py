@@ -1,12 +1,7 @@
-class EfectivoStrategy:
-
-    def procesar_pago(self, carrito, usuario, success_url, cancel_url):
-        # Aquí no hay redirección externa
-        return success_url
-    
 from pedidos.models import Pedido, PedidoDetalle
+from pagos.estrategias.base import MetodoPagoStrategy
 
-class EfectivoStrategy:
+class EfectivoStrategy(MetodoPagoStrategy):
 
     def procesar_pago(self, carrito, usuario, success_url, cancel_url):
 
@@ -26,7 +21,5 @@ class EfectivoStrategy:
                 cantidad=item.cantidad,
                 precio_compra=item.producto.precio
             )
-
-        #items.delete()
 
         return success_url

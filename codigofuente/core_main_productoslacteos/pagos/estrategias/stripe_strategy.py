@@ -1,7 +1,9 @@
 import stripe
 from django.conf import settings
+from pagos.estrategias.base import MetodoPagoStrategy
 
-class StripeStrategy:
+
+class StripeStrategy(MetodoPagoStrategy):
 
     def procesar_pago(self, carrito, usuario, success_url, cancel_url):
         stripe.api_key = settings.STRIPE_SECRET_KEY

@@ -1,0 +1,117 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #F7F5F2;
+    --text: #1A1A18;
+    --muted: #8A8780;
+    --accent: #C0392B;
+    --border: #E2DED9;
+    --white: #FFFFFF;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4rem 3.5rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    animation: fadeUp 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icon-wrap {
+    width: 56px;
+    height: 56px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 0.5s ease 0.1s forwards;
+    opacity: 0;
+}
+
+.icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent);
+    stroke-width: 1.8;
+    fill: none;
+}
+
+h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.5s ease 0.2s forwards;
+    opacity: 0;
+}
+
+p {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.5s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.divider {
+    width: 32px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 0.5s ease 0.35s forwards;
+    opacity: 0;
+}
+
+.btn-carrito {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.875rem 2rem;
+    border: 1.5px solid var(--text);
+    border-radius: 1px;
+    transition: background 0.2s ease, color 0.2s ease;
+    animation: fadeUp 0.5s ease 0.4s forwards;
+    opacity: 0;
+}
+
+.btn-carrito:hover {
+    background: var(--text);
+    color: var(--white);
+}
