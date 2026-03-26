@@ -1,9 +1,156 @@
-    <!--Todo sobre catgeorias-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Categoría | Mi Tienda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== VARIABLES Y BASE ==================== */
+        :root {
+            --amarillo: #ffb300;
+            --naranja: #ff9800;
+            --crema: #fff8e6;
+            --gris-texto: #555;
+            --gris-suave: #ddd;
+        }
 
-    <h1>Crear nueva categoria</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <textarea name="descripcion" placeholder="Descripción" required></textarea>
-        <button type="submit">Crear</button>
-    </form>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--crema);
+            color: var(--gris-texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Centra el form verticalmente en la pantalla */
+        }
+
+        /* ==================== CONTENEDOR DEL FORMULARIO ==================== */
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px;
+        }
+
+        h1 {
+            color: var(--naranja);
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* ==================== ELEMENTOS DEL FORM ==================== */
+        .custom-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--gris-suave);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--amarillo);
+            box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* ==================== BOTONES ==================== */
+        .btn-submit {
+            background-color: var(--amarillo);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--naranja);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        .btn-cancel {
+            text-align: center;
+            text-decoration: none;
+            color: #888;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .btn-cancel:hover {
+            color: var(--naranja);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Crear nueva categoría</h1>
+        
+        <form method="POST" class="custom-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="nombre">Nombre de la categoría</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Queso" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe una breve descripción..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Crear Categoría</button>
+            
+            <a href="{% url 'listar_categorias' %}" class="btn-cancel">Cancelar y volver</a>
+        </form>
+    </div>
+
+</body>
+</html>

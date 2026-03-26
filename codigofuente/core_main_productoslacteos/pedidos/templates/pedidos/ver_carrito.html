@@ -67,9 +67,19 @@
         </a>
 
         <!-- Procesar pago -->
-        <a href="{% url 'crear_checkout' %}" class="btn btn-success">
-            Proceder a pagar
-        </a>
+<form method="POST" action="{% url 'crear_checkout' %}" class="d-flex gap-2">
+    {% csrf_token %}
+
+    <!-- Pago con tarjeta -->
+    <button type="submit" name="metodo_pago" value="stripe" class="btn btn-success">
+        💳 Pagar con tarjeta
+    </button>
+
+    <!-- Pago en efectivo -->
+    <button type="submit" name="metodo_pago" value="efectivo" class="btn btn-secondary">
+        💵 Pagar en efectivo
+    </button>
+</form>
     </div>
 
 {% else %}
